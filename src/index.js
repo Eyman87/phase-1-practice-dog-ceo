@@ -25,14 +25,15 @@ function addBreeds() {
     fetch(breedUrl)
     .then(resp => resp.json())
     .then(results => {
-        console.log("response", results.message)
         const dogBreeds = document.getElementById("dog-breeds")
-        results.message.keys(breed => {
-            console.log(results.message)
+        let breed = Object.keys(results.message)
+        breed.forEach(breed => {
+        //     console.log(results.message)
             const li = document.createElement("li")
-            li.src = breed.key
+            li.innerText = breed
             dogBreeds.append(li)
         })
     })
 }
 
+li.addEventListener.("click")
