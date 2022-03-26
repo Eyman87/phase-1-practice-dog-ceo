@@ -31,9 +31,30 @@ function addBreeds() {
         //     console.log(results.message)
             const li = document.createElement("li")
             li.innerText = breed
-            dogBreeds.append(li)
+            li.addEventListener("click", () => {
+                li.style.color = "red";
+            })
+            dogBreeds.append(li);
         })
+        const dropDown = document.getElementById("breed-dropdown")
+        // 1. filter out none "a" dogs
+        const filterBy = "a"
+        // console.log("first breed", breed[0])
+        // console.log("first letter", breed[0].charAt(0))
+        const result = breed.filter(breed => breed.charAt(0) === filterBy)
+            // how to see the first letter of string only to compare to filterBy if === then true otherwise 
+
+        // let drop = Object.keys(results.message)
+        // drop.forEach(drop => {
+        //     const value = document.createElement()
+        // })
     })
 }
 
-li.addEventListener.("click")
+
+
+
+
+
+
+
