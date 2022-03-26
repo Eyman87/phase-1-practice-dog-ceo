@@ -26,9 +26,8 @@ function addBreeds() {
     .then(resp => resp.json())
     .then(results => {
         const dogBreeds = document.getElementById("dog-breeds")
-        let breed = Object.keys(results.message)
-        breed.forEach(breed => {
-        //     console.log(results.message)
+        let breeds = Object.keys(results.message)
+        breeds.forEach(breed => {
             const li = document.createElement("li")
             li.innerText = breed
             li.addEventListener("click", () => {
@@ -37,17 +36,20 @@ function addBreeds() {
             dogBreeds.append(li);
         })
         const dropDown = document.getElementById("breed-dropdown")
-        // 1. filter out none "a" dogs
-        const filterBy = "a"
-        // console.log("first breed", breed[0])
-        // console.log("first letter", breed[0].charAt(0))
-        const result = breed.filter(breed => breed.charAt(0) === filterBy)
-            // how to see the first letter of string only to compare to filterBy if === then true otherwise 
-
-        // let drop = Object.keys(results.message)
-        // drop.forEach(drop => {
-        //     const value = document.createElement()
-        // })
+        dropDown.addEventListener("change", (e) => {
+            const result = breeds.filter(breed => breed.charAt(0) === e.target.value)
+            while (dogBreeds.firstChild){
+                dogBreeds.removeChild(dogBreeds.lastChild);
+            }
+            result.forEach(dog => {
+                const newLi = document.createElement("li")
+                newLi.innerText = dog
+                newLi.addEventListener("click", () =>{
+                    newLi.style.color = "red";
+                })
+                dogBreeds.append(newLi)
+            })
+        })
     })
 }
 
